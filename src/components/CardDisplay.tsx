@@ -1,4 +1,5 @@
 import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 type CardDisplayProps = {
 	card: string;
@@ -8,9 +9,11 @@ type CardDisplayProps = {
 };
 
 function CardDisplay({ card, onClick, scale = 1, style }: CardDisplayProps) {
+	const cardUrl = useBaseUrl(`/img/cards/${card}.png`);
+	
 	return (
 		<img
-			src={`/img/cards/${card}.png`}
+			src={cardUrl}
 			alt={card}
 			onClick={onClick}
 			style={{

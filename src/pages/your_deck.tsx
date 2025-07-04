@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import CardDeckStack from '../components/CardDeckStack';
 import {
 	cardDefinitions,
@@ -63,6 +64,13 @@ const loadGameState = (): Partial<{
 
 export default function YourDeckPage() {
 	const gameState = loadGameState();
+	
+	// Create image URLs with proper base URL handling
+	const imageUrls = cardDefinitions.reduce((acc, card) => {
+		acc[card.file] = useBaseUrl(`/img/cards/${card.file}.png`);
+		return acc;
+	}, {} as Record<string, string>);
+	const cardBackUrl = useBaseUrl('/img/cards/card_back.png');
 
 	const [deck, setDeck] = useState(
 		deserializeDeck(gameState.deck) ?? getDeck()
@@ -140,18 +148,18 @@ export default function YourDeckPage() {
 
 		// Go through every card
 		for (const { file } of cardDefinitions) {
-			images.add(`/img/cards/${file}.png`);
+			images.add(imageUrls[file]);
 		}
 
 		// Add the card back too
-		images.add('/img/cards/card_back.png');
+		images.add(cardBackUrl);
 
 		// Preload each image
 		images.forEach((src) => {
 			const img = new Image();
 			img.src = src;
 		});
-	}, []);
+	}, [imageUrls, cardBackUrl]);
 
 	useEffect(() => {
 		if (currentOverlay === OverlayType.DUPLICATING) return;
@@ -284,7 +292,7 @@ export default function YourDeckPage() {
 					{hand.map((card, i) => (
 						<img
 							key={i}
-							src={`/img/cards/${card.file}.png`}
+							src={imageUrls[card.file]}
 							alt={card.id}
 							style={{
 								width: 100 * 1.25,
@@ -305,7 +313,7 @@ export default function YourDeckPage() {
 					{Array.from({ length: handSize - hand.length }).map((_, i) => (
 						<img
 							key={i}
-							src='/img/cards/card_back.png'
+							src={cardBackUrl}
 							alt='Card back'
 							style={{
 								width: 100 * 1.25,

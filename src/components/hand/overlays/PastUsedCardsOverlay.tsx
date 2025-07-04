@@ -1,5 +1,6 @@
 import { OverlayType } from '@site/src/core/overlay';
 import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Overlay from '../../Overlay';
 import CardButton from '../../CardButton';
 import { DeckCard } from '@site/src/core/deck';
@@ -18,6 +19,11 @@ function PastUsedCardsOverlay({
 	pastUsedCards,
 	setPastUsedCards,
 }: PastUsedCardsOverlayProps) {
+	// Create image URLs with proper base URL handling
+	const imageUrls = pastUsedCards.reduce((acc, card) => {
+		acc[card.file] = useBaseUrl(`/img/cards/${card.file}.png`);
+		return acc;
+	}, {} as Record<string, string>);
 	return (
 		<Overlay visible={currentOverlay === OverlayType.PAST_USED_CARDS}>
 			<h2
@@ -54,7 +60,7 @@ function PastUsedCardsOverlay({
 							}}
 						>
 							<img
-								src={`/img/cards/${card.file}.png`}
+								src={imageUrls[card.file]}
 								alt=''
 								className='card-image'
 							/>

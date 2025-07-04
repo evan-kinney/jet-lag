@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { OverlayType } from '../core/overlay';
 
 type CardDeckStackProps = {
@@ -9,6 +10,7 @@ type CardDeckStackProps = {
 const CardDeckStack = forwardRef<HTMLDivElement, CardDeckStackProps>(
 	({ count, setCurrentOverlay }, ref) => {
 		const visibleCards = Math.min(count, 10);
+		const cardBackUrl = useBaseUrl('/img/cards/card_back.png');
 
 		return (
 			<div style={{ textAlign: 'center' }}>
@@ -28,7 +30,7 @@ const CardDeckStack = forwardRef<HTMLDivElement, CardDeckStackProps>(
 					{Array.from({ length: visibleCards }).map((_, i) => (
 						<img
 							key={i}
-							src='/img/cards/card_back.png'
+							src={cardBackUrl}
 							alt='Card Back'
 							style={{
 								position: 'absolute',

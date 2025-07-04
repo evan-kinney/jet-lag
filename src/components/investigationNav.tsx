@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useHistory } from '@docusaurus/router';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import '../pages/investigationBook.css';
 
 const navItems = [
@@ -14,6 +15,12 @@ const navItems = [
 export default function InvestigationNav() {
 	const location = useLocation();
 	const history = useHistory();
+	
+	// Create URLs with proper base URL handling
+	const navItemsWithBaseUrl = navItems.map(item => ({
+		...item,
+		path: useBaseUrl(item.path)
+	}));
 
 	const handleReset = () => {
 		const confirm = window.confirm(
@@ -34,7 +41,7 @@ export default function InvestigationNav() {
 	return (
 		<div className='investigation-nav'>
 			<div className='investigation-nav-tabs'>
-				{navItems.map((item) => (
+				{navItemsWithBaseUrl.map((item) => (
 					<button
 						key={item.path}
 						className={`nav-tab ${

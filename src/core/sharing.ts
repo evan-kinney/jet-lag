@@ -189,7 +189,9 @@ let cardData = {
 };
 
 export async function shareCardImage(cardFile: string) {
-	const imageUrl = `${window.location.origin}/img/cards/${cardFile}.png`;
+	// Get the correct base URL for images
+	const baseUrl = window.location.pathname.includes('/jet-lag/') ? '/jet-lag' : '';
+	const imageUrl = `${window.location.origin}${baseUrl}/img/cards/${cardFile}.png`;
 
 	try {
 		const response = await fetch(imageUrl);

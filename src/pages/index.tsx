@@ -1,18 +1,21 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import './Home.css';
 import './font/stylesheet.css';
 import { Analytics } from '@vercel/analytics/react';
 
 export default function Home() {
+	const logoUrl = useBaseUrl('/img/jetlag.png');
+	
 	return (
 		<Layout description='A real-world game played on public transit'>
 			<Analytics />
 			<div className='homepage-hero'>
 				<div className='hide-seek-logo'>
 					<div className='logo'>
-						<img src='/img/jetlag.png' alt='Hide and Seek Logo' />
+						<img src={logoUrl} alt='Hide and Seek Logo' />
 					</div>
 					<div
 						className='logo-container'

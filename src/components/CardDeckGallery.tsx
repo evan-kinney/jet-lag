@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import '../css/custom.css';
 
 const timeBonuses = [
@@ -53,6 +54,12 @@ const allCards = [...timeBonuses, ...powerups, ...curses, ...blankCard];
 export default function CardDeckGallery() {
 	const [selectedCard, setSelectedCard] = useState<string | null>(null);
 	const [closing, setClosing] = useState(false);
+	
+	// Get all image URLs with proper base URL handling
+	const imageUrls = allCards.reduce((acc, card) => {
+		acc[card.file] = useBaseUrl(`/img/cards/${card.file}.png`);
+		return acc;
+	}, {} as Record<string, string>);
 
 	const currentIndex = allCards.findIndex((c) => c.file === selectedCard);
 
@@ -87,9 +94,9 @@ export default function CardDeckGallery() {
 	useEffect(() => {
 		allCards.forEach((card) => {
 			const img = new Image();
-			img.src = `/img/cards/${card.file}.png`;
+			img.src = imageUrls[card.file];
 		});
-	}, []);
+	}, [imageUrls]);
 
 	useEffect(() => {
 		window.addEventListener('keydown', handleKeyDown);
@@ -124,7 +131,7 @@ export default function CardDeckGallery() {
 						}}
 					>
 						<img
-							src={`/img/cards/${card.file}.png`}
+							src={imageUrls[card.file]}
 							alt=''
 							className='card-image'
 						/>
@@ -153,7 +160,7 @@ export default function CardDeckGallery() {
 						className={`card-modal-content ${closing ? 'fade-out' : ''}`}
 						onClick={(e) => e.stopPropagation()}
 					>
-						<img src={`/img/cards/${selectedCard}.png`} alt='Expanded card' />
+						<img src={imageUrls[selectedCard]} alt='Expanded card' />
 						<div className='card-modal-nav'></div>
 					</div>
 				</div>
