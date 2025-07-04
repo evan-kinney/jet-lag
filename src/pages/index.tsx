@@ -8,6 +8,9 @@ import { Analytics } from '@vercel/analytics/react';
 
 export default function Home() {
 	const logoUrl = useBaseUrl('/img/jetlag.png');
+	const ruleBookUrl = useBaseUrl('/docs/quick_start_guide');
+	const investigationBookUrl = useBaseUrl('/investigation/matching');
+	const yourDeckUrl = useBaseUrl('/your_deck');
 	
 	return (
 		<Layout description='A real-world game played on public transit'>
@@ -50,13 +53,13 @@ export default function Home() {
 							justifyContent: 'space-evenly',
 						}}
 					>
-						<Link className='button' to='/docs/quick_start_guide'>
+						<Link className='button' to={ruleBookUrl}>
 							Rule Book
 						</Link>
-						<Link className='button' to='/investigation/matching'>
+						<Link className='button' to={investigationBookUrl}>
 							Investigation Book
 						</Link>
-						<Link className='button' to='/your_deck'>
+						<Link className='button' to={yourDeckUrl}>
 							Your Deck
 						</Link>
 					</div>

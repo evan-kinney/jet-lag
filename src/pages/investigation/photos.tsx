@@ -25,6 +25,8 @@ const allPrompts: Record<string, string[]> = {
 export default function Photos() {
 	const [photos, setPhotos] = useState<Record<string, string>>({});
 	const [zoomed, setZoomed] = useState<string | null>(null);
+	
+	const uploadPlaceholderUrl = useBaseUrl('/img/default-placeholder.png');
 
 	useEffect(() => {
 		const saved = localStorage.getItem('photosNotes');
@@ -142,7 +144,7 @@ export default function Photos() {
 												justifyContent: 'center',
 												alignItems: 'center',
 												cursor: 'pointer',
-												background: `url(${uploadPlaceholder}) center/50% no-repeat`,
+												background: `url(${uploadPlaceholderUrl}) center/50% no-repeat`,
 											}}
 										>
 											<input
