@@ -14,8 +14,6 @@ export default function Thermometer() {
 				storageKey='thermometerNotes'
 				fields={{
 					'All Games': ['½ Mile', '3 Miles'],
-					'Add for Medium & Large': ['10 Miles'],
-					'Add for Large': ['50 Miles'],
 				}}
 			/>
 		</Layout>

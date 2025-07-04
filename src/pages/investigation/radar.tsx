@@ -20,9 +20,6 @@ export default function Radar() {
 						'3 Miles',
 						'5 Miles',
 						'10 Miles',
-						'25 Miles',
-						'50 Miles',
-						'100 Miles',
 						'CHOOSE',
 					],
 				}}

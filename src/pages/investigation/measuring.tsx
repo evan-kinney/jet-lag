@@ -15,13 +15,13 @@ export default function Measuring() {
 				fields={{
 					Transit: [
 						'A Commercial Airport',
-						'A High Speed Train Line',
-						'A Rail Station',
+						'MARC, VRE, or Amtrak Train Line',
+						'A Metro Station',
 					],
 					Borders: [
-						'An International Border',
-						'A 1st Admin. Div. Border',
-						'A 2nd Admin. Div. Border',
+						'A State Border',
+						'A Quadrant Border',
+						'A Ward Border',
 					],
 					Natural: [
 						'Sea Level',
@@ -31,17 +31,18 @@ export default function Measuring() {
 						'A Park',
 					],
 					'Places of Interest': [
-						'An Amusement Park',
 						'A Zoo',
 						'An Aquarium',
 						'A Golf Course',
 						'A Museum',
 						'A Movie Theater',
+						'A Call Your Mother',
+						'A Tatte',
 					],
 					'Public Utilities': [
 						'A Hospital',
 						'A Library',
-						'A Foreign Consulate',
+						'A Embassy',
 					],
 				}}
 			/>

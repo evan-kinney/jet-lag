@@ -14,27 +14,24 @@ export default function Matching() {
 				storageKey='matchingNotes'
 				fields={{
 					Transit: [
-						'Commercial Airport',
-						'Transit Line',
-						'Station’s Name Length',
+						'Metro Line',
 						'Street or Path',
 					],
 					'Administrative Divisions': [
-						'1st Admin. Division',
-						'2nd Admin. Division',
-						'3rd Admin. Division',
-						'4th Admin. Division',
+						'Quadrant',
+						'Ward',
+						'Police District'
 					],
 					Natural: ['Mountain', 'Landmass', 'Park'],
 					'Places of Interest': [
-						'Amusement Park',
-						'Zoo',
 						'Aquarium',
 						'Golf Course',
 						'Museum',
 						'Movie Theater',
+						'Call Your Mother',
+						'Tatte',
 					],
-					'Public Utilities': ['Hospital', 'Library', 'Foreign Consulate'],
+					'Public Utilities': ['Hospital', 'Library', 'Embassy'],
 				}}
 			/>
 		</Layout>

@@ -10,10 +10,8 @@ const allPrompts: Record<string, string[]> = {
 		'You',
 		'Widest Street',
 		'Tallest Structure in Your Sightline',
-		'Any Building Visible from Station',
-	],
-	'Add for Medium & Large': [
-		'Tallest Building Visible from Station',
+		'Any Building Visible from Metro Station',
+		'Tallest Building Visible from Metro Station',
 		'Trace Nearest Street/Path',
 		'Two Buildings',
 		'Restaurant Interior',
@@ -21,13 +19,7 @@ const allPrompts: Record<string, string[]> = {
 		'Park',
 		'Grocery Store Aisle',
 		'Place of Worship',
-	],
-	'Add for Large': [
-		'½ Mile of Streets Traced',
-		'Tallest Mountain Visible from Station',
-		'Biggest Body of Water in Your Zone',
-		'Five Buildings',
-	],
+	]
 };
 
 export default function Photos() {
@@ -94,8 +86,7 @@ export default function Photos() {
 				<h1 className='investigation-title'>6. PHOTOS</h1>
 				<div className='investigation-chips'>
 					<span className='chip'>DRAW 1</span>
-					<span className='chip'>S/M: 10 MIN</span>
-					<span className='chip'>L: 20 MIN</span>
+					<span className='chip'>10 MINUTES</span>
 				</div>
 				<p className='investigation-question'>Send a photo of Subject</p>
 
